@@ -7,6 +7,7 @@
     	.container {
 		    width: 1000px;
 		    height: 1000px;
+		    overflow: hidden;
 		}
 
 		.inner {
@@ -25,7 +26,7 @@
 </head>
 <body>
 
-	<input type='text' id='units'></input>
+	<button type='button' id='clear'>Clear</button>
 
 	<br/>
 	<br/>
@@ -34,13 +35,25 @@
 
     <script src="jquery.js"></script>
     <script>
- 
-    $(document).ready(function() {
-    	for(i = 0; i < 16*16; i++){
+ 	var makeGrid = function(size){
+ 		for(i = 0; i < size*size; i++){
     		$(".container").append("<div class='inner'></div>");
     	}
+ 	}
 
-    	$('div.inner').mouseenter(function() {
+    $(document).ready(function() {
+    	var size = 16;
+    	makeGrid(size);
+
+    	$('#clear').click(function(){
+    		$('div.inner').hide();
+    		size = prompt("Please enter the number of squares per side you would like for the new grid: ");
+    		makeGrid(size);
+    		$('div.inner').css('width', 1000/size);
+    		$('div.inner').css('height', 1000/size);
+    	});
+
+    	$('div.inner').on('mouseenter', function() {
     		$(this).addClass('touched');
     	});
     });
