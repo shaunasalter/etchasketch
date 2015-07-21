@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+    	.container {
+		    width: 1000px;
+		    height: 1000px;
+		}
+
+		.inner {
+		    width: 50px;
+		    height: 50px;
+		    border: 1px solid black;
+		    display: inline-block;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		.touched {
+			background-color: black;
+		}
+    </style>
+</head>
+<body>
+
+	<input type='text' id='units'></input>
+
+	<br/>
+	<br/>
+    <div class='container'>
+	</div>
+
+    <script src="jquery.js"></script>
+    <script>
+ 
+    $(document).ready(function() {
+    	for(i = 0; i < 16*16; i++){
+    		$(".container").append("<div class='inner'></div>");
+    	}
+
+    	$('div.inner').mouseenter(function() {
+    		$(this).addClass('touched');
+    	});
+    });
+ 
+    </script>
+</body>
+</html>
