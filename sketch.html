@@ -5,22 +5,21 @@
     <title>Demo</title>
     <style>
     	.container {
-		    width: 1000px;
+		    width: 1400px;
 		    height: 1000px;
 		    overflow: hidden;
 		}
 
 		.inner {
-		    width: 50px;
-		    height: 50px;
-		    border: 1px solid black;
-		    display: inline-block;
+		    width: 10px;
+		    height: 10px;
+            float: left;
 		    margin: 0;
 		    padding: 0;
 		}
 
 		.touched {
-			background-color: black;
+			background-color: red;
 		}
     </style>
 </head>
@@ -42,18 +41,20 @@
  	}
 
     $(document).ready(function() {
-    	var size = 16;
+    	var size = 100;
+        $('div.inner').css('width', 1000/size);
+        $('div.inner').css('height', 1000/size);
     	makeGrid(size);
 
     	$('#clear').click(function(){
-    		$('div.inner').hide();
+    		$('div.inner').removeClass('touched');
     		size = prompt("Please enter the number of squares per side you would like for the new grid: ");
     		makeGrid(size);
     		$('div.inner').css('width', 1000/size);
     		$('div.inner').css('height', 1000/size);
     	});
 
-    	$('div.inner').on('mouseenter', function() {
+    	$('div.inner').mouseenter(function() {
     		$(this).addClass('touched');
     	});
     });
